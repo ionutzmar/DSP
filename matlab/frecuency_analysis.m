@@ -1,4 +1,4 @@
-[samples, fs] = audioread('../Sound/longSoundsWAV/G3Guitar.wav');
+[samples, fs] = audioread('../Sound/longSoundsWAV/F4.wav');
 samples = samples(:, 1);
 finishTime = length(samples) / fs;
 t = 0: 1 / fs : finishTime - 1/fs;
