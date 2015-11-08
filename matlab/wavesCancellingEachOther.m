@@ -1,17 +1,20 @@
-fs = 44100;
-t = 0 : 1 / fs : 1;
-w1 = sin((2 * pi * 500) * t);
-w3 = sin((2 * pi * 508) * t);
-w2 = -w1;
-plot(t, w1 + w2);
+%In this example I try to mute a song by playing the same song on the other
+%speaker but with opposite values
+
+[samples, fs] = audioread('../Sound/Songs/Coldplay-Paradise.wav');%../Sound/WAV_Long_sounds/AmChordGuitar.wav');
+totalTime = length(samples) / fs;
+t = 0 : 1/fs : totalTime - 1/fs;
+plot(t, samples(:, 1));
+yStereo = [-samples(:, 1) samples(:, 1)];
+%yStereo = [zeros(length(samples(:, 1)), 1) samples(:, 1)];
+sound(yStereo, fs);
 
 
-obj = audioplayer(w1, fs);
-obj2 = audioplayer(w2, fs);
+%Beat (acoustics) phenomenon:
 
-play(obj);
-%play(obj2);
-
-%beats if obj2 or obj1 is mute
-obj3 = audioplayer(w3, fs);
-play(obj3);
+% fs = 44100;
+% t = 0 : 1/fs : 5;
+% w1 = sin((2 * pi * 300) * t);
+% w2 = sin((2 * pi * 301) * t);
+% yStereo = [w2' w1'];
+% sound(yStereo, fs);

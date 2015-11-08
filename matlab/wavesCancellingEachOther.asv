@@ -1,13 +1,16 @@
+%[samples, fs] = audioread('../Sound/WAV_Long_sounds/AmChordGuitar.wav');%../Sound/Songs/Coldplay-Paradise.wav');
+
+totalTime = length(samples) / fs;
+%t = 0 : 1/fs : totalTime - 1/fs;
+
+%w2 = w1;
+
+
+%plot(t, samples(:, 1));
+%yStereo = [-samples(:, 1) samples(:, 1)];
+%yStereo = [zeros(length(samples(:, 1)), 1) samples(:, 1)];
+%sound(yStereo, fs);
+
 fs = 44100;
-t = 0 : 1 / fs : 5;
-w1 = sin((2 * pi * 500) * t);
-w3 = sin((2 * pi * 50) * t);
-w2 = -w1;
-plot(t, w1 + w2);
-
-obj = audioplayer(w1, fs);
-play(obj);
-
-
-%obj3 = audioplayer(w3, fs);
-%play(obj3);
+%yStereo = [w3' w1'];
+%sound(yStereo, fs);
